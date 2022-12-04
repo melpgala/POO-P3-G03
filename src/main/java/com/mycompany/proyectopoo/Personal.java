@@ -8,12 +8,16 @@ public class Personal {
     protected Cargo cargo;
     
     public Personal(String usuario, String contrasena, String nombre, Cargo cargo){
-        this.usuario = usuario;
-        this.contrasena = contrasena;
+        //this(usuario,contrasena);
         this.nombre = nombre;
         this.cargo = cargo;
     }
-
+    
+    /*public Personal(String usuario, String contrasena){
+        this.usuario = usuario;
+        this.contrasena = contrasena;
+    }
+    */
     public String getUsuario() {
         return usuario;
     }
@@ -30,6 +34,11 @@ public class Personal {
         return cargo;
     }
     
-
+    /*
+    public boolean equals(Object objeto){
+        Personal comparacion = (personal) objeto;
+        return this.usuario.equals(comparacion.usuario) and this.contrasena.equals(comparacion.contrasena);
+    }
+    */
    
 }
