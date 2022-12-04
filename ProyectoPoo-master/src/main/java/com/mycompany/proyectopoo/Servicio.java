@@ -17,6 +17,10 @@ public class Servicio {
     public int getCodigo() {
         return codigo;
     }
+    
+    public double getPrecio(){
+        return precio;
+    }
 
     public void setPrecio(double precio) {
         this.precio = precio;

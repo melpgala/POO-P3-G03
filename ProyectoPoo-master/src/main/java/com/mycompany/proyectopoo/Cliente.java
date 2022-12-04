@@ -29,6 +29,9 @@ public class Cliente extends Administrado{
         return direccion;
     }
     
+    public boolean equals(int codigo){
+        return this.codigo == codigo;
+    }
     
     
 }

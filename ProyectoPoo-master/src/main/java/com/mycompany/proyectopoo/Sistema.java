@@ -10,6 +10,7 @@ import java.util.Scanner;
     private static ArrayList<OrdenServicio> listaOrdenes = new ArrayList<>();
     private static ArrayList<ReporteInsumos> listaReportes = new ArrayList<>();
     
+    
 
     
     public void inicializarSistema(){
