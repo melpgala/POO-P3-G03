@@ -5,14 +5,16 @@ public class Servicio {
     private double precio;
     private String nombre;
     private int codigo;
+    private static int contador;
     
     public Servicio(double precio, String nombre){
         this.precio = precio;
         this.nombre = nombre;
-        this.codigo = generarCodigo();  
+        this.codigo = contador +1;
+        contador++;
+ 
     }
     
-    public int generarCodigo(){}
 
     public int getCodigo() {
         return codigo;

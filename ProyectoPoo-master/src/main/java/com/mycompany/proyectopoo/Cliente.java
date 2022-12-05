@@ -6,7 +6,7 @@ public class Cliente extends Administrado{
     public Cliente(String nombre, String telefono, String direccion, int tipoCliente){
         super(nombre,telefono,direccion);
         this.tipoCliente = tipoCliente;
-        this.codigo = generarCodigo();
+
     }
 
     public int getTipoCliente() {

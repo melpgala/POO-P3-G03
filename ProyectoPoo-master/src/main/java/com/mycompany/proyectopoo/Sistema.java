@@ -29,25 +29,63 @@ import java.util.Scanner;
       //creacion de objetos ordene de servicio
       
       //creacion de objetos reporte de insumos
-      
+      Sistema.logIn();
     }
     
     
     
-    public static boolean logIn(){
+    public static void logIn(){ // cambie a void en lugar de boolean
       boolean registrado = false;
+      String user;
+      String contra;
+      Scanner sc = new Scanner(System.in);
       while(!registrado){
         System.out.println("Ingrese usuario: ");
-        Scanner sc = new Scanner(System.in);
-        String user = sc.nextLine();
+        user = sc.nextLine();
         
         System.out.println("Ingrese contrasena: ");
-        String contra = sc.nextLine();
-        
+        contra = sc.nextLine();
+      
+        registrado = listaUsuarios.contains(new Personal(user, contra, "deprueba",Cargo.ADMIN));
+        if (registrado){
+            for(Personal persona: listaUsuarios){
+                boolean personaCorrecta = persona.equals(new Personal(user,contra,"Deprueba",Cargo.ADMIN));
+                if(personaCorrecta){
+                    System.out.println("Registrado Con Exito");
+                    if (persona instanceof Admin){
+                        Admin esAdministrador = (Admin) persona;
+                        esAdministrador.mostrarMenu();
+                        }
+                    else if (persona instanceof Cobranza){
+                        Cobranza esCobranza = (Cobranza) persona;
+                        esCobranza.mostrarMenu();
+                        }
+                    else if(persona instanceof Tecnico){
+                        Tecnico esTecnico = (Tecnico) persona;
+                        esTecnico.mostrarMenu();
+                        } 
+
+
+            }
+            }
+            
+      }
+        else{
+            System.out.println("Usuario no encontrado, vuelva a intentarlo.");
             
         }
-      return
-    }
+        
+      
+      }
+      sc.close();
+      
+  }
+        
+    
+        
+            
+
+    
 
     public static ArrayList<Personal> getListaUsuarios() {
         return listaUsuarios;
@@ -57,7 +95,7 @@ import java.util.Scanner;
         return listaClientes;
     }
 
-    public static void addCliente(Cliete c){
+    public static void addCliente(Cliente c){
         listaClientes.add(c);
     }
 

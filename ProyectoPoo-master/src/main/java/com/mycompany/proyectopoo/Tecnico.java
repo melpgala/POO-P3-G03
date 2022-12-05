@@ -1,7 +1,7 @@
 
 package com.mycompany.proyectopoo;
 import java.util.Scanner;
-
+import java.util.ArrayList;
 public class Tecnico extends Personal{
     
     public Tecnico(String usuario, String contrasena, String nombre, Cargo cargo){
@@ -36,24 +36,47 @@ public class Tecnico extends Personal{
     public void generarOrdenServicio(){
         Scanner sc = new Scanner(System.in);
         System.out.println("Ingrese el código del cliente");
-        int codigo = sc.nextInt();
+        int codigoCliente = sc.nextInt();
+        sc.nextLine();
+        ArrayList<Cliente> clienteSistema = Sistema.getListaClientes();
+        while(!clienteSistema.contains(codigoCliente)){
+            System.out.println("Cliente no encontrado, asegurese de ingresar correctamente el codigo");
+            codigoCliente = sc.nextInt();
+            sc.nextLine();
+        }
+        int indice = clienteSistema.indexOf(codigoCliente);
+        Cliente cl = clienteSistema.get(indice);
         System.out.println("Ingrese fecha de realización del servicio, asegurese que tenga el siguiente formato: dd/mm/aaaa");
         String fecha = sc.nextLine();
+        String[] listaFecha = fecha.split("/");
         System.out.println("Indique el número del tipo de vehículo: \n1- automóvil. \n2- motocicletas. \n3- bus.");
         int tipoVehiculo = sc.nextInt();
         sc.nextLine();
         System.out.println("Ingrese la placa del vehículo, asegurese que tenga el formato AAA-999");
         String placa = sc.nextLine();
         int codigoServicio = 0;
+        ArrayList<Servicio> serviciosHechos = new ArrayList<>();
         while(codigoServicio != -1){
             System.out.println("Ingrese el código del servicio a realizar en el vehículo:");
             codigoServicio = sc.nextInt();
             sc.nextLine();
-            //usar el codigo para buscar el servicio en la listaServicios
-            //agregar servicio a la lista servicios realizados
+            ArrayList<Servicio> servicioSistema = Sistema.getListaServicios();
+            if(servicioSistema.contains(codigoServicio)){
+                int index = servicioSistema.indexOf(codigoServicio);
+                 serviciosHechos.add(servicioSistema.get(index));
+                
             }
-        //for()
-        //sumar los valores de los servicios
+            else if(!servicioSistema.contains(codigoServicio)&& codigoServicio!= -1){
+                System.out.println("Servicio no encontrado, escriba correctamente el codigo");
+            }
+            
+            }
+        double sumaContador =0;
+        for (Servicio serv: serviciosHechos){
+            sumaContador += serv.getPrecio();
+        }
+        System.out.println("Valor a pagar: " + sumaContador);
+        OrdenServicio orden = new OrdenServicio(cl,this,listaFecha,placa,tipoVehiculo,serviciosHechos);
         sc.close();
         mostrarMenu();
     }
