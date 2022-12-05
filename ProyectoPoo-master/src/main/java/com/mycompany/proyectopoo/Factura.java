@@ -10,7 +10,7 @@ public class Factura {
         //busca al cliente por el codigo
         ArrayList<Cliente> listaClientes = Sistema.getListaClientes();
         int indice = listaClientes.indexOf(codigo);
-        Cliente clienteP =  listaClientes.get(indice);
+        Cliente clienteP =  listaClientes.get(indice); //deberia ser el cliente de la asignacion de rriba
         
         //asginacion de parametros al objeto factura
         this.cliente = clienteP;

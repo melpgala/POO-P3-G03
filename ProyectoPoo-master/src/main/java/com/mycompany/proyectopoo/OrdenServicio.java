@@ -36,7 +36,7 @@ public class OrdenServicio {
         return listaServiciosRealizados;
     }
     
-    public boolean equals(int codigo, String[] fechaIns){
+    public boolean equals(int codigo, String[] fechaIns){  /// no creo que ste bien
         if(cliente.equals(codigo)){
             if(fecha[1].equals(fechaIns[0]) && fecha[2].equals(fechaIns[1]))
                 return true;
@@ -44,7 +44,7 @@ public class OrdenServicio {
         return false;
     }
     
-    public boolean equals(String[] fechaIns){
+    public boolean equals(String[] fechaIns){  // no se si esta pueda estar bien
         return (fecha[1].equals(fechaIns[0]) && fecha[2].equals(fechaIns[1]));
     }
 }

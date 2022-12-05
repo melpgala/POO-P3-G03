@@ -13,7 +13,7 @@ import java.util.Scanner;
     
 
     
-    public void inicializarSistema(){
+    public void Sistema(){
       //creacion de los objetos personal
       listaUsuarios.add(new Admin("admin1","12345678","Administrador",Cargo.ADMIN));
       listaUsuarios.add(new Tecnico("alopez","al123456","Alvaro Lopez",Cargo.TECNICO));
@@ -29,7 +29,7 @@ import java.util.Scanner;
       //creacion de objetos ordene de servicio
       
       //creacion de objetos reporte de insumos
-      Sistema.logIn();
+      logIn();
     }
     
     
@@ -64,11 +64,11 @@ import java.util.Scanner;
                         Tecnico esTecnico = (Tecnico) persona;
                         esTecnico.mostrarMenu();
                         } 
-
+                     //para que sepa el tecnico deberia conseguir cual es el tecnico en la lista no solo hacer el downcasting ya no creo
 
             }
             }
-            
+            //desea continuar y la regresa al bucle de registro o sale
       }
         else{
             System.out.println("Usuario no encontrado, vuelva a intentarlo.");
@@ -78,6 +78,7 @@ import java.util.Scanner;
       
       }
       sc.close();
+      
       
   }
         

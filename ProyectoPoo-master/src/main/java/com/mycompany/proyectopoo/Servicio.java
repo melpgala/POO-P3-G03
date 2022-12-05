@@ -28,7 +28,7 @@ public class Servicio {
         this.precio = precio;
     }
 
-    public boolean equals(int c){
+    public boolean equals(int c){  //modificar
         return codigo == c;
     }
 }

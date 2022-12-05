@@ -152,7 +152,7 @@ public class Admin extends Personal{
         sc.nextLine();
         
         //verificar que el código del servicio existe
-        while(!Sistema.getListaServicios().contains(codigo)){
+        while(!Sistema.getListaServicios().contains(codigo)){ // cambiar equals
             System.out.println("código no encontrado, inserte un código valido");
             codigo = sc.nextInt();
         }
@@ -163,5 +163,7 @@ public class Admin extends Personal{
         int indice = Sistema.getListaServicios().indexOf(codigo);
         Sistema.setPrecioServicio(indice, precio);
         System.out.println("Se ha cambiado el precio al servicio de forma exitosa");
+        
+        administrarServicios();
     }  
 }

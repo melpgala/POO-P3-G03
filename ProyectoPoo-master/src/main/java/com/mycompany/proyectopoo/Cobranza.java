@@ -46,7 +46,7 @@ public class Cobranza extends Personal{
         //busca las ordenes de servicios de las empresas
         ArrayList<OrdenServicio> listaOrdenesFiltrada = new ArrayList<>();
         for(OrdenServicio orden: Sistema.getListaOrdenes()){
-            if(orden.equals(codigo,listaFecha)){
+            if(orden.equals(codigo,listaFecha)){  /// cambiar el equals
                 listaOrdenesFiltrada.add(orden);
             }
         }
@@ -68,14 +68,14 @@ public class Cobranza extends Personal{
         ArrayList<Servicio> serviciosSinRepetir =new ArrayList<>();
         ArrayList<Integer> contador = new ArrayList<>();
         for(OrdenServicio orden: Sistema.getListaOrdenes()){
-            if(orden.equals(listaFecha)){
+            if(orden.equals(listaFecha)){ // mirar si el equals esta bien
                 totalServicios.addAll(orden.getListaServiciosRealizados());
             }
         }
         
         //contando los servicios
         for(Servicio servicio: totalServicios){
-            if(!serviciosSinRepetir.contains(servicio)){
+            if(!serviciosSinRepetir.contains(servicio)){ // esta bien pero debe modificar el equals para que sea un objeto como este
                 serviciosSinRepetir.add(servicio);
                 contador.add(1);
             }else{
@@ -109,7 +109,7 @@ public class Cobranza extends Personal{
         ArrayList<Double> acumulador = new ArrayList<>(); // guarda el total de cada orden
         ArrayList<Double> contador = new ArrayList<>(); // guarda el total de cada tecnico
         for(OrdenServicio orden: Sistema.getListaOrdenes()){
-            if(orden.equals(listaFecha)){
+            if(orden.equals(listaFecha)){  // ver el equals
                 totalTecnicos.add(orden.getTecnico());
                 ArrayList<Servicio> serviciosTecnico = orden.getListaServiciosRealizados();
                 double acumuladorPrecio = 0;
@@ -127,11 +127,12 @@ public class Cobranza extends Personal{
                 contador.add(acumulador.get(t));
             }else{
                 int indice = tecnicosSinRepetir.indexOf(totalTecnicos.get(t));
-                contador.set(indice,(contador.get(indice)+ acumulador.get(indice)));
+                contador.set(indice,(contador.get(indice)+ acumulador.get(indice))); // t no deberia ser
                 //revisar equals()
             }    
         }
         
+        //mostrar cuando recaudo cada tecnico
         
         
     }

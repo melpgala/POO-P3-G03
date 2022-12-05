@@ -39,12 +39,12 @@ public class Tecnico extends Personal{
         int codigoCliente = sc.nextInt();
         sc.nextLine();
         ArrayList<Cliente> clienteSistema = Sistema.getListaClientes();
-        while(!clienteSistema.contains(codigoCliente)){
+        while(!clienteSistema.contains(codigoCliente)){ //
             System.out.println("Cliente no encontrado, asegurese de ingresar correctamente el codigo");
             codigoCliente = sc.nextInt();
             sc.nextLine();
         }
-        int indice = clienteSistema.indexOf(codigoCliente);
+        int indice = clienteSistema.indexOf(codigoCliente); //
         Cliente cl = clienteSistema.get(indice);
         System.out.println("Ingrese fecha de realización del servicio, asegurese que tenga el siguiente formato: dd/mm/aaaa");
         String fecha = sc.nextLine();
@@ -56,14 +56,22 @@ public class Tecnico extends Personal{
         String placa = sc.nextLine();
         int codigoServicio = 0;
         ArrayList<Servicio> serviciosHechos = new ArrayList<>();
-        while(codigoServicio != -1){
+        while(codigoServicio != -1){  
             System.out.println("Ingrese el código del servicio a realizar en el vehículo:");
             codigoServicio = sc.nextInt();
             sc.nextLine();
             ArrayList<Servicio> servicioSistema = Sistema.getListaServicios();
-            if(servicioSistema.contains(codigoServicio)){
+            if(servicioSistema.contains(codigoServicio)){ //
                 int index = servicioSistema.indexOf(codigoServicio);
                  serviciosHechos.add(servicioSistema.get(index));
+                 //pedir que ya no se desea agregar mas y sea igual a -1
+                 System.out.println("Este es el ultimo servicio a ingresar, ingrese SI sino NO");
+                 Scanner scan = new Scanner(System.in);
+                 String resp = scan.nextLine().toUpperCase();
+                 if (resp.equals("SI")){
+                     codigoServicio = -1;
+                }
+                 scan.close();
                 
             }
             else if(!servicioSistema.contains(codigoServicio)&& codigoServicio!= -1){
@@ -77,7 +85,7 @@ public class Tecnico extends Personal{
         }
         System.out.println("Valor a pagar: " + sumaContador);
         OrdenServicio orden = new OrdenServicio(cl,this,listaFecha,placa,tipoVehiculo,serviciosHechos);
-        sc.close();
+        sc.close(); /// en la anterior como sabe que es el this o no si solo quiero poner el tecnico con el user y contra 
         mostrarMenu();
     }
     

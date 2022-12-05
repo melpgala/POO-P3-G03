@@ -29,7 +29,7 @@ public class Cliente extends Administrado{
         return direccion;
     }
     
-    public boolean equals(int codigo){
+    public boolean equals(int codigo){  // modificar
         return this.codigo == codigo;
     }
     
