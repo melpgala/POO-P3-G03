@@ -127,7 +127,7 @@ public class Cobranza extends Personal{
                 contador.add(acumulador.get(t));
             }else{
                 int indice = tecnicosSinRepetir.indexOf(totalTecnicos.get(t));
-                contador.set(indice,(contador.get(indice)+ acumulador.get(indice))); // t no deberia ser
+                contador.set(indice,(contador.get(indice)+ acumulador.get(t))); ////
                 //revisar equals()
             }    
         }
