@@ -22,7 +22,6 @@ public class Tecnico extends Personal{
            opcion = sc.nextInt();
            sc.nextLine();
         }
-       sc.close();
        
         // llamando los metodos correspondientes a las opciones
         switch(opcion){
@@ -34,17 +33,17 @@ public class Tecnico extends Personal{
     
     
     public void generarOrdenServicio(){
-        Scanner sc = new Scanner(System.in);
         System.out.println("Ingrese el código del cliente");
+        Scanner sc = new Scanner(System.in);
         int codigoCliente = sc.nextInt();
         sc.nextLine();
         ArrayList<Cliente> clienteSistema = Sistema.getListaClientes();
-        while(!clienteSistema.contains(codigoCliente)){ //
+        while(!clienteSistema.contains(new Cliente(codigoCliente))){ //
             System.out.println("Cliente no encontrado, asegurese de ingresar correctamente el codigo");
             codigoCliente = sc.nextInt();
             sc.nextLine();
         }
-        int indice = clienteSistema.indexOf(codigoCliente); //
+        int indice = clienteSistema.indexOf(new Cliente(codigoCliente)); //
         Cliente cl = clienteSistema.get(indice);
         System.out.println("Ingrese fecha de realización del servicio, asegurese que tenga el siguiente formato: dd/mm/aaaa");
         String fecha = sc.nextLine();
@@ -61,20 +60,20 @@ public class Tecnico extends Personal{
             codigoServicio = sc.nextInt();
             sc.nextLine();
             ArrayList<Servicio> servicioSistema = Sistema.getListaServicios();
-            if(servicioSistema.contains(codigoServicio)){ //
-                int index = servicioSistema.indexOf(codigoServicio);
+            if(servicioSistema.contains(new Servicio(codigoServicio))){ //
+                int index = servicioSistema.indexOf(new Servicio(codigoServicio));
                  serviciosHechos.add(servicioSistema.get(index));
                  //pedir que ya no se desea agregar mas y sea igual a -1
                  System.out.println("Este es el ultimo servicio a ingresar, ingrese SI sino NO");
-                 Scanner scan = new Scanner(System.in);
-                 String resp = scan.nextLine().toUpperCase();
+                 
+                 String resp = sc.nextLine().toUpperCase();
                  if (resp.equals("SI")){
                      codigoServicio = -1;
                 }
-                 scan.close();
+                
                 
             }
-            else if(!servicioSistema.contains(codigoServicio)&& codigoServicio!= -1){
+            else if(!servicioSistema.contains(new Servicio(codigoServicio))&& codigoServicio!= -1){
                 System.out.println("Servicio no encontrado, escriba correctamente el codigo");
             }
             
@@ -85,7 +84,7 @@ public class Tecnico extends Personal{
         }
         System.out.println("Valor a pagar: " + sumaContador);
         OrdenServicio orden = new OrdenServicio(cl,this,listaFecha,placa,tipoVehiculo,serviciosHechos);
-        sc.close(); /// en la anterior como sabe que es el this o no si solo quiero poner el tecnico con el user y contra 
+         /// en la anterior como sabe que es el this o no si solo quiero poner el tecnico con el user y contra 
         mostrarMenu();
     }
     
@@ -103,7 +102,7 @@ public class Tecnico extends Personal{
         boolean correo = false;
         if(confirmacion.toUpperCase().equals("S")){
             correo = true;
-            System.out.println("Correo enivado");
+            System.out.println("Correo enviado");
         }
         
         Sistema.addReporte(new ReporteInsumos(this,reporte,correo));

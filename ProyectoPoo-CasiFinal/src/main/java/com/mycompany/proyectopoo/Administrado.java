@@ -18,6 +18,10 @@ public class Administrado {
         contador++;
        
     }
+    
+    public Administrado(int codigo){
+        this.codigo = codigo;
+    }
 
     
     public int getCodigo() {
@@ -36,6 +40,8 @@ public class Administrado {
         return direccion;
     }
    
-    
+    public String toString(){
+        return (codigo +" "+nombre + " "+ direccion+ " "+ telefono);
+    }
     
 }

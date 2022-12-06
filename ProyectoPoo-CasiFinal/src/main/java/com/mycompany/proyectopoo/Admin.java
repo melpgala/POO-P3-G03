@@ -35,6 +35,9 @@ public class Admin extends Personal{
     
     public void administrarClientes(){
     // mostrar los clientes
+        for(Cliente cl: Sistema.getListaClientes()){
+            System.out.println(cl);
+        }
         System.out.println("Seleccione el numero de opción que desea realizar.");
         System.out.println("1. Agregar Cliente.\n2. Regresar al menú principal");
         Scanner sc = new Scanner(System.in);
@@ -74,6 +77,9 @@ public class Admin extends Personal{
 
     public void administrarProveedor(){
         // mostrar los proveedores
+        for(Proveedor prov: Sistema.getListaProveedores()){
+            System.out.println(prov);
+        }
         System.out.println("Seleccione el numero de opción que desea realizar.");
         System.out.println("1. Agregar Proveedor.\n2. Regresar al menú principal");
         Scanner sc = new Scanner(System.in);
@@ -110,7 +116,10 @@ public class Admin extends Personal{
     
     
     public void administrarServicios(){
-    // mostrar los clientes
+    // mostrar los servicios
+        for(Servicio serv: Sistema.getListaServicios()){
+            System.out.println(serv);
+        }
         System.out.println("Seleccione el numero de opción que desea realizar.");
         System.out.println("1. Agregar Servicio.\n2. Editar Servicio.\n3. Regresar al menú principal");
         Scanner sc = new Scanner(System.in);
@@ -152,7 +161,7 @@ public class Admin extends Personal{
         sc.nextLine();
         
         //verificar que el código del servicio existe
-        while(!Sistema.getListaServicios().contains(codigo)){ // cambiar equals
+        while(!Sistema.getListaServicios().contains(new Servicio(codigo))){ // cambiar equals
             System.out.println("código no encontrado, inserte un código valido");
             codigo = sc.nextInt();
         }
@@ -160,7 +169,7 @@ public class Admin extends Personal{
         System.out.println("Inserte el nuevo precio del Servicio");
         double precio = sc.nextDouble();
         
-        int indice = Sistema.getListaServicios().indexOf(codigo);
+        int indice = Sistema.getListaServicios().indexOf(new Servicio(codigo));
         Sistema.setPrecioServicio(indice, precio);
         System.out.println("Se ha cambiado el precio al servicio de forma exitosa");
         

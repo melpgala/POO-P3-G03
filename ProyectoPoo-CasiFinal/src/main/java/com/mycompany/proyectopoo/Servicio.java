@@ -15,6 +15,10 @@ public class Servicio {
  
     }
     
+    public Servicio(int codigo){
+        this.codigo = codigo;
+    }
+    
 
     public int getCodigo() {
         return codigo;
@@ -28,13 +32,19 @@ public class Servicio {
         this.precio = precio;
     }
 
-    public boolean equals(int c){  //modificar
-        return codigo == c;
+    public boolean equals(Object ob){  //modificar
+        Servicio serv = (Servicio) ob;
+        return this.codigo == serv.codigo ;
     }
 
     public String getNombre() {
         return nombre;
     }
+
+    public String toString(){
+        return (codigo +" "+ nombre+ " "+ precio);
+    }
+    
     
 }
 

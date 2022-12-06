@@ -21,6 +21,7 @@ import java.util.Scanner;
       listaUsuarios.add(new Cobranza("mcastro","mc123456","Maria Castro",Cargo.COBRANZA));
       listaUsuarios.add(new Tecnico("mbarcos","mb123456","Mario Barcos",Cargo.TECNICO));
       
+
       //creacion de objetos cliente
       Cliente c1= new Cliente("Grupo HG S.A","0987654321","Latinoamericana y Puerto Rico",2);
       Cliente c2= new Cliente("Grupo Roldan","0963818884","Isabel y Santa Cruz",2);
@@ -63,21 +64,21 @@ import java.util.Scanner;
       serviciosOrden2.add(s3);
       serviciosOrden2.add(s4);
       
-      String fecha3 = "05/09/2022";
+      String fecha3 = "05/12/2022";
       ArrayList<Servicio> serviciosOrden3 = new ArrayList<>();
       serviciosOrden3.add(s1);
       serviciosOrden3.add(s3);
       
-      String fecha4 = "06/12/2021";
+      String fecha4 = "06/12/2022";
       ArrayList<Servicio> serviciosOrden4 = new ArrayList<>();
       serviciosOrden4.add(s2);
       serviciosOrden4.add(s4);
       serviciosOrden4.add(s5);
       
-      listaOrdenes.add(new OrdenServicio(c1,(Tecnico)listaUsuarios.get(2),fecha1.split("/"),"ABK-7441",1,serviciosOrden1));
-      listaOrdenes.add(new OrdenServicio(c2,(Tecnico)listaUsuarios.get(4),fecha2.split("/"),"AGE-445",1,serviciosOrden2));
-      listaOrdenes.add(new OrdenServicio(c3,(Tecnico)listaUsuarios.get(2),fecha3.split("/"),"GFH-396",3,serviciosOrden3));
-      listaOrdenes.add(new OrdenServicio(c4,(Tecnico)listaUsuarios.get(4),fecha4.split("/"),"JI-3130",2,serviciosOrden4));
+      listaOrdenes.add(new OrdenServicio(c1,(Tecnico)listaUsuarios.get(1),fecha1.split("/"),"ABK-7441",1,serviciosOrden1));
+      listaOrdenes.add(new OrdenServicio(c2,(Tecnico)listaUsuarios.get(3),fecha2.split("/"),"AGE-445",1,serviciosOrden2));
+      listaOrdenes.add(new OrdenServicio(c3,(Tecnico)listaUsuarios.get(1),fecha3.split("/"),"GFH-396",3,serviciosOrden3));
+      listaOrdenes.add(new OrdenServicio(c4,(Tecnico)listaUsuarios.get(3),fecha4.split("/"),"JI-3130",2,serviciosOrden4));
     }
     
     
@@ -150,7 +151,7 @@ import java.util.Scanner;
     public static void setPrecioServicio(int indice, double nuevoPrecio){
         Servicio servCamb = listaServicios.get(indice);
         servCamb.setPrecio(nuevoPrecio);
-        listaServicios.add(indice,servCamb);
+        listaServicios.set(indice,servCamb);
     }
 
     

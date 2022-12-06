@@ -2,14 +2,20 @@
 package com.mycompany.proyectopoo;
 
 public class Cliente extends Administrado{
-    private int tipoCliente; //enum
+    private String tipoCliente; 
     public Cliente(String nombre, String telefono, String direccion, int tipoCliente){
         super(nombre,telefono,direccion);
-        this.tipoCliente = tipoCliente;
-
+        switch(tipoCliente){
+            case 1 -> this.tipoCliente = "Personal";
+            case 2 -> this.tipoCliente = "Empresarial";
+        }
+    }
+    public Cliente(int codigo){
+        super(codigo);
+    
     }
 
-    public int getTipoCliente() {
+    public String getTipoCliente() {
         return tipoCliente;
     }
 
@@ -29,8 +35,13 @@ public class Cliente extends Administrado{
         return direccion;
     }
     
-    public boolean equals(int codigo){  // modificar
-        return this.codigo == codigo;
+    public boolean equals(Object ob){
+        Cliente cl = (Cliente) ob;
+        return (this.codigo == cl.codigo);
+    }
+
+    public String toString() {
+        return (super.toString() +" "+ tipoCliente);
     }
     
     

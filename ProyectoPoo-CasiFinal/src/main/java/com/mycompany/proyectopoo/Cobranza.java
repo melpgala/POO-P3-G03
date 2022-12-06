@@ -45,8 +45,13 @@ public class Cobranza extends Personal{
         
         //busca las ordenes de servicios de las empresas
         ArrayList<OrdenServicio> listaOrdenesFiltrada = new ArrayList<>();
+        ArrayList<Cliente> listaCliente = Sistema.getListaClientes();
+        
+        int indice = listaCliente.indexOf(new Cliente(codigo));
+        Cliente cliente = listaCliente.get(indice);
+        
         for(OrdenServicio orden: Sistema.getListaOrdenes()){
-            if(orden.equals(codigo,listaFecha)){  /// cambiar el equals
+            if(orden.equals(new OrdenServicio(cliente,listaFecha))){  /// cambiar el equals
                 listaOrdenesFiltrada.add(orden);
             }
         }
@@ -54,7 +59,9 @@ public class Cobranza extends Personal{
         //creacion de facturas
         Factura factura1 = new Factura(codigo,listaFecha,listaOrdenesFiltrada);
         factura1.imprimeFactura();
-        sc.close();
+        
+        mostrarMenu();
+        
     }
     
     public void reporteIngreso(){
@@ -68,7 +75,7 @@ public class Cobranza extends Personal{
         ArrayList<Servicio> serviciosSinRepetir =new ArrayList<>();
         ArrayList<Integer> contador = new ArrayList<>();
         for(OrdenServicio orden: Sistema.getListaOrdenes()){
-            if(orden.equals(listaFecha)){ // mirar si el equals esta bien
+            if(orden.equals(new OrdenServicio(null,listaFecha))){ // mirar si el equals esta bien
                 totalServicios.addAll(orden.getListaServiciosRealizados());
             }
         }
@@ -87,13 +94,13 @@ public class Cobranza extends Personal{
         
         //format
         double total =0;
-        System.out.format("%-20s %-7s", "Servicio","Total\n");
+        System.out.format("%-50s %-7s", "Servicio","Total\n");
         for(int i= 0; i<serviciosSinRepetir.size();i++){
-            System.out.format("%-20s %-7s", serviciosSinRepetir.get(i).getNombre(),contador.get(i)*serviciosSinRepetir.get(i).getPrecio()+"\n");
+            System.out.format("%-50s %-7s", serviciosSinRepetir.get(i).getNombre(),contador.get(i)*serviciosSinRepetir.get(i).getPrecio()+"\n");
             total+= contador.get(i)*serviciosSinRepetir.get(i).getPrecio();
         }
         System.out.println("Total recaudado por los servicios: " + total);
-        
+        mostrarMenu();
         
      
         
@@ -111,7 +118,7 @@ public class Cobranza extends Personal{
         ArrayList<Double> acumulador = new ArrayList<>(); // guarda el total de cada orden
         ArrayList<Double> contador = new ArrayList<>(); // guarda el total de cada tecnico
         for(OrdenServicio orden: Sistema.getListaOrdenes()){
-            if(orden.equals(listaFecha)){  // ver el equals
+            if(orden.equals(new OrdenServicio(null,listaFecha))){  // ver el equals
                 totalTecnicos.add(orden.getTecnico());
                 ArrayList<Servicio> serviciosTecnico = orden.getListaServiciosRealizados();
                 double acumuladorPrecio = 0;
@@ -137,10 +144,10 @@ public class Cobranza extends Personal{
         //mostrar cuando recaudo cada tecnico
         System.out.format("%-20s %-7s", "Tecnico","Total\n");
         for(int e=0; e<tecnicosSinRepetir.size(); e++ ){
-            System.out.format("%-20s %-7s",tecnicosSinRepetir.get(e).getNombre(),contador.get(e));
+            System.out.format("%-20s %-7s",tecnicosSinRepetir.get(e).getNombre(),contador.get(e)+"\n");
         }
         
-        
+        mostrarMenu();
         
     }
     

@@ -7,4 +7,8 @@ public class Proveedor extends Administrado{
         super(nombre,telefono,direccion);
         
     } 
+    
+    public String toString(){
+        return (codigo +" "+nombre + " "+ direccion+ " "+ telefono);
+    }
 }

@@ -24,7 +24,12 @@ public class OrdenServicio {
         }
         this.listaServiciosRealizados =listaServiciosRealizados;
     }
+    
 
+    public OrdenServicio(Cliente cl, String[] fecha){
+        this.cliente = cl;
+        this.fecha = fecha;
+    }
     public String[] getFecha() {
         return fecha;
     }
@@ -41,18 +46,23 @@ public class OrdenServicio {
         return listaServiciosRealizados;
     }
     
-    public boolean equals(int codigo, String[] fechaIns){  /// no creo que ste bien
-        if(cliente.equals(codigo)){
-            if(fecha[1].equals(fechaIns[0]) && fecha[2].equals(fechaIns[1]))
-                return true;
+    public boolean equals(Object ob){ 
+        OrdenServicio orden = (OrdenServicio) ob;
+        
+        if (orden.getCliente() != null){
+        if(this.cliente.equals(orden.getCliente())){ ///
+            return this.fecha[1].equals(orden.getFecha()[0]) && this.fecha[2].equals(orden.getFecha()[1]);
+        }
+        }
+        else if(orden.getCliente() == null){
+            return this.fecha[1].equals(orden.getFecha()[0]) && this.fecha[2].equals(orden.getFecha()[1]);
         }
         return false;
     }
-    
-    public boolean equals(String[] fechaIns){  // no se si esta pueda estar bien
-        return (fecha[1].equals(fechaIns[0]) && fecha[2].equals(fechaIns[1]));
-    }
 
+    //public boolean equals(String[] fechaIns){  // no se si esta pueda estar bien
+    //    return (fecha[1].equals(fechaIns[0]) && fecha[2].equals(fechaIns[1]));
+    //}
     public String getTipoVehiculo() {
         return tipoVehiculo;
     }
