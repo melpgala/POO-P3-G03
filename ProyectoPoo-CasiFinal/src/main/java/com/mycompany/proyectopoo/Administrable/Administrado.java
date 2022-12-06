@@ -1,9 +1,10 @@
 
-package com.mycompany.proyectopoo;
+package com.mycompany.proyectopoo.Administrable;
 
 public class Administrado {
     
     protected int codigo;
+    // el contador se encargara de generar el codigo para clientes y proveedores
     protected static int contador;
     protected String nombre;
     protected String telefono;

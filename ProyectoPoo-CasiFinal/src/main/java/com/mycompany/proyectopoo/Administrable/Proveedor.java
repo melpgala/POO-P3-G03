@@ -1,5 +1,5 @@
 
-package com.mycompany.proyectopoo;
+package com.mycompany.proyectopoo.Administrable;
 
 public class Proveedor extends Administrado{
     

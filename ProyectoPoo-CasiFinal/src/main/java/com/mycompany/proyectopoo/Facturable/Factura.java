@@ -1,5 +1,8 @@
 
-package com.mycompany.proyectopoo;
+package com.mycompany.proyectopoo.Facturable;
+import com.mycompany.proyectopoo.Administrable.Servicio;
+import com.mycompany.proyectopoo.Administrable.Cliente;
+import com.mycompany.proyectopoo.Sistema;
 import java.util.ArrayList;
 public class Factura {
     private Cliente cliente;
@@ -10,7 +13,7 @@ public class Factura {
         //busca al cliente por el codigo
         ArrayList<Cliente> listaClientes = Sistema.getListaClientes();
         int indice = listaClientes.indexOf(new Cliente(codigo));
-        Cliente clienteP =  listaClientes.get(indice); //deberia ser el cliente de la asignacion de rriba
+        Cliente clienteP =  listaClientes.get(indice); 
         
         //asginacion de parametros al objeto factura
         this.cliente = clienteP;
@@ -24,14 +27,26 @@ public class Factura {
         System.out.println("Detalles de servicio:");
         System.out.format("%-10s %-10s %-12s %-40s %-12s %-5s", "#Placa", "Fecha", "Tipo","Servicio","Cantidad","Total\n");
         double precio =0;
+        
+        // recorremos las ordenes que se encuentran en la lista
         for(OrdenServicio orden: listaOrdenesCliente){
             
+            //recorremos los servicios de cada orden
             for(Servicio serv: orden.getListaServiciosRealizados()){
                precio += serv.getPrecio();
                System.out.format("%-10s %-10s %-12s %-40s %-12s %-5s", orden.getPlacaVehiculo(), orden.getFecha()[0]+"/"+orden.getFecha()[1], orden.getTipoVehiculo(), serv.getNombre(),"1" ,serv.getPrecio()+"\n");
             }
         }
-        System.out.println("Total a pagar: "+ precio);
+        
+        //se agrega valor adicional a las empresas
+        if (cliente.getTipoCliente().equals("Empresarial")){
+            System.out.println("Por tener prioridad en la atencion: $50 adicionales");
+
+            System.out.println("Total a pagar: "+ (precio + 50));
+        }
+        else {
+            System.out.println("Total a pagar: "+ precio);
+        }
     }
    
 } 

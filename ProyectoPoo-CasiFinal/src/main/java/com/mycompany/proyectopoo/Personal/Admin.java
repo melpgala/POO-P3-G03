@@ -1,5 +1,10 @@
 
-package com.mycompany.proyectopoo;
+package com.mycompany.proyectopoo.Personal;
+import com.mycompany.proyectopoo.Administrable.Cliente;
+import com.mycompany.proyectopoo.Personal.Personal;
+import com.mycompany.proyectopoo.Administrable.Proveedor;
+import com.mycompany.proyectopoo.Administrable.Servicio;
+import com.mycompany.proyectopoo.Sistema;
 import java.util.Scanner;
 import java.util.ArrayList;
 
@@ -38,11 +43,14 @@ public class Admin extends Personal{
         for(Cliente cl: Sistema.getListaClientes()){
             System.out.println(cl);
         }
+        
+        //Muestra submenu
         System.out.println("Seleccione el numero de opción que desea realizar.");
         System.out.println("1. Agregar Cliente.\n2. Regresar al menú principal");
         Scanner sc = new Scanner(System.in);
         int opcion = sc.nextInt();
         sc.nextLine();
+        
         
         //verificacion de uso de opcion correcta
         while(opcion < 1 && opcion > 2){
@@ -60,6 +68,7 @@ public class Admin extends Personal{
     
     
     public void agregarCliente(){
+        //peticion de los datos
         Scanner sc = new Scanner(System.in);
         System.out.println("Ingrese nombre del cliente:");
         String nombre = sc.nextLine();
@@ -70,6 +79,7 @@ public class Admin extends Personal{
         System.out.println("¿Qué tipo de cliente es?\nSi es de tipo Personal digite 1.\nSi es de tipo Empresarial digite 2.");
         int tipoCliente = sc.nextInt();
         sc.nextLine();
+        //agregar cliente a la lista de clientes del sistema
         Sistema.addCliente(new Cliente(nombre,direccion,telefono,tipoCliente));
         System.out.println("Cliente creado con éxito");
         administrarClientes(); //devuelve al submenu
@@ -80,6 +90,8 @@ public class Admin extends Personal{
         for(Proveedor prov: Sistema.getListaProveedores()){
             System.out.println(prov);
         }
+        
+        //muestra submenu
         System.out.println("Seleccione el numero de opción que desea realizar.");
         System.out.println("1. Agregar Proveedor.\n2. Regresar al menú principal");
         Scanner sc = new Scanner(System.in);
@@ -102,16 +114,18 @@ public class Admin extends Personal{
     
     
     public void agregarProveedor(){
+        //se piden los datos del proovedor
         Scanner sc = new Scanner(System.in);
         System.out.println("Ingrese nombre del Proveedor:");
-            String nombre = sc.nextLine();
-            System.out.println("Ingrese la dirección del Proveedor:");
-            String direccion = sc.nextLine();
-            System.out.println("Ingrese telefono del Proveedor: ");
-            String telefono = sc.nextLine();
-            Sistema.addProveedor(new Proveedor(nombre,direccion,telefono));
-            System.out.println("Proveedor creado con éxito");
-            administrarProveedor(); //devuelve al submenu 
+        String nombre = sc.nextLine();
+        System.out.println("Ingrese la dirección del Proveedor:");
+        String direccion = sc.nextLine();
+        System.out.println("Ingrese telefono del Proveedor: ");
+        String telefono = sc.nextLine();
+        //agrega proveedor a la lista de proveedores del sistema 
+        Sistema.addProveedor(new Proveedor(nombre,direccion,telefono));
+        System.out.println("Proveedor creado con éxito");
+        administrarProveedor(); //devuelve al submenu 
     }
     
     
@@ -143,18 +157,21 @@ public class Admin extends Personal{
     
     
     public void agregarServicio(){
+        //se piden los datos
         Scanner sc = new Scanner(System.in);
         System.out.println("Ingrese nombre del Servicio:");
         String nombre = sc.nextLine();
         System.out.println("Ingrese el precio del Servicio:");
         double precio = sc.nextDouble();
         sc.nextLine();
+        //se agrega el servicio a la lista de servicios del sistema
         Sistema.addServicio(new Servicio(precio,nombre));
         administrarServicios();
         
     }
     
     public void modificarValorServicio(){
+        // pide informacion del servicio
         System.out.println("Indique el código del servicio que desea modificar.");
         Scanner sc = new Scanner(System.in);
         int codigo = sc.nextInt();
@@ -169,6 +186,7 @@ public class Admin extends Personal{
         System.out.println("Inserte el nuevo precio del Servicio");
         double precio = sc.nextDouble();
         
+        // se cambia el precio del servicio
         int indice = Sistema.getListaServicios().indexOf(new Servicio(codigo));
         Sistema.setPrecioServicio(indice, precio);
         System.out.println("Se ha cambiado el precio al servicio de forma exitosa");

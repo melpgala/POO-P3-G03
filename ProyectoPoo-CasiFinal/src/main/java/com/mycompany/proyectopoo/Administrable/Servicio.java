@@ -1,11 +1,12 @@
 
-package com.mycompany.proyectopoo;
+package com.mycompany.proyectopoo.Administrable;
 
 public class Servicio {
     private double precio;
     private String nombre;
     private int codigo;
     private static int contador;
+    // el contador se encargara de generar el codigo de los servicios
     
     public Servicio(double precio, String nombre){
         this.precio = precio;
@@ -32,7 +33,7 @@ public class Servicio {
         this.precio = precio;
     }
 
-    public boolean equals(Object ob){  //modificar
+    public boolean equals(Object ob){  
         Servicio serv = (Servicio) ob;
         return this.codigo == serv.codigo ;
     }

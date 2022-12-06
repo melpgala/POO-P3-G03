@@ -1,5 +1,5 @@
 
-package com.mycompany.proyectopoo;
+package com.mycompany.proyectopoo.Administrable;
 
 public class Cliente extends Administrado{
     private String tipoCliente; 
@@ -35,7 +35,7 @@ public class Cliente extends Administrado{
         return direccion;
     }
     
-    public boolean equals(Object ob){
+    public boolean equals(Object ob){ //se sobre escribe el equals para comparar
         Cliente cl = (Cliente) ob;
         return (this.codigo == cl.codigo);
     }

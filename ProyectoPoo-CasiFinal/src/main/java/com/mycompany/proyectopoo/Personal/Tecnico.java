@@ -1,5 +1,11 @@
 
-package com.mycompany.proyectopoo;
+package com.mycompany.proyectopoo.Personal;
+import com.mycompany.proyectopoo.Administrable.Cliente;
+import com.mycompany.proyectopoo.Facturable.OrdenServicio;
+import com.mycompany.proyectopoo.Personal.Personal;
+import com.mycompany.proyectopoo.Facturable.ReporteInsumos;
+import com.mycompany.proyectopoo.Administrable.Servicio;
+import com.mycompany.proyectopoo.Sistema;
 import java.util.Scanner;
 import java.util.ArrayList;
 public class Tecnico extends Personal{

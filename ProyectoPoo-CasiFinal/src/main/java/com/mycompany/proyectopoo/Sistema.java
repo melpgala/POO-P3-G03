@@ -1,8 +1,20 @@
 package com.mycompany.proyectopoo;
+import com.mycompany.proyectopoo.Personal.Cargo;
+import com.mycompany.proyectopoo.Facturable.ReporteInsumos;
+import com.mycompany.proyectopoo.Facturable.OrdenServicio;
+import com.mycompany.proyectopoo.Administrable.Proveedor;
+import com.mycompany.proyectopoo.Administrable.Servicio;
+import com.mycompany.proyectopoo.Administrable.Cliente;
+import com.mycompany.proyectopoo.Personal.Cobranza;
+import com.mycompany.proyectopoo.Personal.Tecnico;
+import com.mycompany.proyectopoo.Personal.Admin;
+import com.mycompany.proyectopoo.Personal.Personal;
 import java.util.ArrayList;
 import java.util.Scanner;
 
   public class Sistema {
+      
+      //se crean listas en donde se guardaran los objetos de todo el sistema
     private static ArrayList<Personal> listaUsuarios = new ArrayList<>();
     private static ArrayList<Cliente> listaClientes = new ArrayList<>();
     private static ArrayList<Servicio> listaServicios = new ArrayList<>();
@@ -83,7 +95,8 @@ import java.util.Scanner;
     
     
     
-    public static void logIn(){ // cambie a void en lugar de boolean
+    public static void logIn(){ 
+      //se verifican las credenciales ingresadas para acceder al menu correspondiente
       boolean registrado = false;
       String user;
       String contra;
@@ -113,10 +126,10 @@ import java.util.Scanner;
                         Tecnico esTecnico = (Tecnico) persona;
                         esTecnico.mostrarMenu();
                         } 
-                     //para que sepa el tecnico deberia conseguir cual es el tecnico en la lista no solo hacer el downcasting ya no creo
+                    
                 }
             }
-            //desea continuar y la regresa al bucle de registro o sale
+            //informa que las creedenciales no son validas
       }else{
             System.out.println("Usuario no encontrado, vuelva a intentarlo.");
         }

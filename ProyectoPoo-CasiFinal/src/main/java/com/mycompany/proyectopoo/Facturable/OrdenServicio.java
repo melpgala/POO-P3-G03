@@ -1,6 +1,9 @@
 
-package com.mycompany.proyectopoo;
+package com.mycompany.proyectopoo.Facturable;
 
+import com.mycompany.proyectopoo.Administrable.Servicio;
+import com.mycompany.proyectopoo.Administrable.Cliente;
+import com.mycompany.proyectopoo.Personal.Tecnico;
 import java.util.ArrayList;
 
 public class OrdenServicio {
@@ -46,23 +49,28 @@ public class OrdenServicio {
         return listaServiciosRealizados;
     }
     
+    // se sobre escribe el equals para comparaciones
     public boolean equals(Object ob){ 
         OrdenServicio orden = (OrdenServicio) ob;
         
+        //verifica que el cliente sea no nulo y compara sus codigos
         if (orden.getCliente() != null){
-        if(this.cliente.equals(orden.getCliente())){ ///
-            return this.fecha[1].equals(orden.getFecha()[0]) && this.fecha[2].equals(orden.getFecha()[1]);
+            
+            if(this.cliente.equals(orden.getCliente())){ 
+                return this.fecha[1].equals(orden.getFecha()[0]) && this.fecha[2].equals(orden.getFecha()[1]);
+                // compara mes y año
+            }
+        
         }
-        }
+        
+        //verifica que el cliente sea nulo, sirve unicamente para comparar las fechas
         else if(orden.getCliente() == null){
             return this.fecha[1].equals(orden.getFecha()[0]) && this.fecha[2].equals(orden.getFecha()[1]);
         }
+        
         return false;
     }
 
-    //public boolean equals(String[] fechaIns){  // no se si esta pueda estar bien
-    //    return (fecha[1].equals(fechaIns[0]) && fecha[2].equals(fechaIns[1]));
-    //}
     public String getTipoVehiculo() {
         return tipoVehiculo;
     }

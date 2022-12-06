@@ -1,5 +1,12 @@
 
-package com.mycompany.proyectopoo;
+package com.mycompany.proyectopoo.Personal;
+import com.mycompany.proyectopoo.Administrable.Cliente;
+import com.mycompany.proyectopoo.Facturable.Factura;
+import com.mycompany.proyectopoo.Facturable.OrdenServicio;
+import com.mycompany.proyectopoo.Personal.Tecnico;
+import com.mycompany.proyectopoo.Personal.Personal;
+import com.mycompany.proyectopoo.Administrable.Servicio;
+import com.mycompany.proyectopoo.Sistema;
 import java.util.Scanner;
 import java.util.ArrayList;
 
@@ -47,11 +54,13 @@ public class Cobranza extends Personal{
         ArrayList<OrdenServicio> listaOrdenesFiltrada = new ArrayList<>();
         ArrayList<Cliente> listaCliente = Sistema.getListaClientes();
         
+        //buscamos el cliente
         int indice = listaCliente.indexOf(new Cliente(codigo));
         Cliente cliente = listaCliente.get(indice);
         
+        //filtramos las ordenes de servicio segun cliente y fecha
         for(OrdenServicio orden: Sistema.getListaOrdenes()){
-            if(orden.equals(new OrdenServicio(cliente,listaFecha))){  /// cambiar el equals
+            if(orden.equals(new OrdenServicio(cliente,listaFecha))){ 
                 listaOrdenesFiltrada.add(orden);
             }
         }
@@ -92,7 +101,7 @@ public class Cobranza extends Personal{
             }    
         }
         
-        //format
+        //uso del format para salida de informacion
         double total =0;
         System.out.format("%-50s %-7s", "Servicio","Total\n");
         for(int i= 0; i<serviciosSinRepetir.size();i++){
@@ -113,10 +122,13 @@ public class Cobranza extends Personal{
         String fecha = sc.nextLine();
         String[] listaFecha = fecha.split("/");
         
+
         ArrayList<Tecnico> totalTecnicos = new ArrayList<>(); //guarda los tecnicos de cada orden
         ArrayList<Tecnico> tecnicosSinRepetir = new ArrayList<>(); //lista de tecnicos sin repetir
         ArrayList<Double> acumulador = new ArrayList<>(); // guarda el total de cada orden
         ArrayList<Double> contador = new ArrayList<>(); // guarda el total de cada tecnico
+        
+        //se obtiene las ordenes de servicio en la fecha ingresada
         for(OrdenServicio orden: Sistema.getListaOrdenes()){
             if(orden.equals(new OrdenServicio(null,listaFecha))){  // ver el equals
                 totalTecnicos.add(orden.getTecnico());
@@ -129,7 +141,7 @@ public class Cobranza extends Personal{
             }
         } 
         
-        //contando los tecnicos
+        //contando los tecnicos y los ingresos recaudados
         for(int t = 0;t < totalTecnicos.size();t++ ){
             if(!tecnicosSinRepetir.contains(totalTecnicos.get(t))){
                 tecnicosSinRepetir.add(totalTecnicos.get(t));

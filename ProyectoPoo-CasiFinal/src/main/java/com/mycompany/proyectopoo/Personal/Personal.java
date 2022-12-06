@@ -1,7 +1,7 @@
 
-package com.mycompany.proyectopoo;
+package com.mycompany.proyectopoo.Personal;
 
-public class Personal{ //quito abstract
+public class Personal{ 
     protected String usuario;
     protected String contrasena;
     protected String nombre;
@@ -15,7 +15,7 @@ public class Personal{ //quito abstract
         this.cargo = cargo;
     }
     
-    public void mostrarMenu(){}; //quite abstract
+    public void mostrarMenu(){};  //mostrará un menú dependiendo del cargo que tenga la persona
 
     public String getUsuario() {
         return usuario;
@@ -29,7 +29,7 @@ public class Personal{ //quito abstract
         return nombre;
     }
 
-    public boolean equals(Object objeto){
+    public boolean equals(Object objeto){  //sobre escritura de equals para realizar comparaciones
         Personal comparacion = (Personal) objeto;
         return (this.usuario.equals(comparacion.usuario) && (this.contrasena.equals(comparacion.contrasena)));
     }
