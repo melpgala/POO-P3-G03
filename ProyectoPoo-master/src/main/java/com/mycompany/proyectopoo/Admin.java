@@ -3,35 +3,13 @@ package com.mycompany.proyectopoo;
 import java.util.Scanner;
 import java.util.ArrayList;
 
-public class Admin extends Personal{
-    
-    public Admin(String usuario, String contrasena, String nombre, Cargo cargo) {
-        super(usuario,contrasena,nombre,cargo);
-    }
-    
+public class Admin implements IPersonal{
+
     @Override
     public void mostrarMenu(){
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Seleccione el número de la acción que desea realizar:");
-        System.out.println("1. Administrar clientes.\n2. Administrar proveedores. \n3. Administrar servicios.");
-        int opcion = sc.nextInt();
-        sc.nextLine();
-        
-        //verificacion de uso de opcion correcta
-        while(opcion < 1 && opcion > 3){
-            System.out.println("Ingrese el número de una acción valida");
-            opcion = sc.nextInt();
-            sc.nextLine();
-        }
-        
-        // llamando los metodos correspondientes a las opciones
-        switch(opcion){
-          case 1 -> administrarClientes();
-          case 2 -> administrarProveedor();
-          case 3 -> administrarServicios();
-        }
-        
+        // insertar codigo para desplegar menu para Admin
     }
+    // insertar codigo necesario para Admin
     
     public void administrarClientes(){
     // mostrar los clientes
