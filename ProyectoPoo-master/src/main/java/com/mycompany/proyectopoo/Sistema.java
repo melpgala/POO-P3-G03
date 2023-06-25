@@ -2,7 +2,19 @@ package com.mycompany.proyectopoo;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-  public class Sistema {
+public class Sistema {
+     /* se insertan como atributos los inicializadores de las clases tenico, cobranza y admin
+    se inserta constructor
+    */
+    
+    public void iniciarSistema(){
+        // se inicializan objetos usando sus clases inicializadoras
+        // se usa gestionadoir de inicion de seeion
+        
+    }
+
+  //insertar codigo necesrio para Sistema
+  /*
     private static ArrayList<Personal> listaUsuarios = new ArrayList<>();
     private static ArrayList<Cliente> listaClientes = new ArrayList<>();
     private static ArrayList<Servicio> listaServicios = new ArrayList<>();
@@ -139,5 +151,6 @@ import java.util.Scanner;
     public static void addReporte(ReporteInsumos r){
         listaReportes.add(r);
     }
+  */
   }
     
