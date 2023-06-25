@@ -2,34 +2,18 @@
 package com.mycompany.proyectopoo;
 import java.util.Scanner;
 import java.util.ArrayList;
-public class Tecnico extends Personal{
-    
-    public Tecnico(String usuario, String contrasena, String nombre, Cargo cargo){
-        super(usuario,contrasena,nombre,cargo);
-    }
+
+    public class Tecnico implements IPersonal{
     
     @Override
     public void mostrarMenu(){
-      Scanner sc = new Scanner(System.in);
-      System.out.println("Seleccione el número de la acción que desea realizar:");
-      System.out.println("1. Generar orden de servicios.\n2. Reportar falta de insumos. \n3. Salir.");
-      int opcion = sc.nextInt();
-      sc.nextLine();
-      
-       //verificacion de uso de opcion correcta
-       while(opcion < 1 && opcion > 3){
-           System.out.println("Ingrese el número de una acción valida");
-           opcion = sc.nextInt();
-           sc.nextLine();
-        }
-       sc.close();
-       
-        // llamando los metodos correspondientes a las opciones
-        switch(opcion){
-          case 1 -> generarOrdenServicio();
-          case 2 -> reportarInsumo();
-          case 3 -> Sistema.logIn(); //que hace esto?
-        }            
+        // insertar codigo para desplegar menu para tecnico
+    }
+    
+    // Insertar metodos necesarios para tecnico
+        
+    public Tecnico(String usuario, String contrasena, String nombre, Cargo cargo){
+        super(usuario,contrasena,nombre,cargo);
     }
     
     
